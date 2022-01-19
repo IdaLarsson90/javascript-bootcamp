@@ -12,74 +12,92 @@ const filtered = filterByCountry(users, 'DE');
 
 console.log(filtered);
 
-
-
-function filterByGender (users, gender) {
-    let usersByGender = [];
+// function filterByGender (users, gender) {
+//     let usersByGender = [];
   
-    if (gender === 'Male' ) {
-      for (let user of users) {
-        if (user.name.title === 'Mr' || user.name.title === 'Monsieur') {
-            usersByGender.push(user);
-            }
-        }
-    }
-    else {
-        for (let user of users) {
-            if (user.name.title != 'Mr' && user.name.title != 'Monsieur') {
-                usersByGender.push(user);
-            }
-        }
-    }
-    return usersByGender;  
+//     if (gender === 'Male' ) {
+//       for (let user of users) {
+//         if (user.name.title === 'Mr' || user.name.title === 'Monsieur') {
+//             usersByGender.push(user);
+//             }
+//         }
+//     }
+//     else {
+//         for (let user of users) {
+//             if (user.name.title != 'Mr' && user.name.title != 'Monsieur') {
+//                 usersByGender.push(user);
+//             }
+//         }
+//     }
+//     return usersByGender;  
     
     
-}
-const filteredByGender = filterByGender(users, 'Female');
+// }
+// const filteredByGender = filterByGender(users, 'Female');
 
-console.log(filteredByGender);
+// console.log(filteredByGender);
 
-/**     Ta emot listan på användare
- *      returnera ny lista med bara e-mailadresser
- * 
- */
+// /**     Ta emot listan på användare
+//  *      returnera ny lista med bara e-mailadresser
+//  * 
+//  */
 
- function emailAdresses (users) {
-    let emailList = [];
+//  function emailAdresses (users) {
+//     let emailList = [];
 
-    for (let user of users) {
-        emailList.push(user.email);
-    }
-    return emailList;
-}
+//     for (let user of users) {
+//         emailList.push(user.email);
+//     }
+//     return emailList;
+// }
 
 
-function newEmail(users) {
+// function newEmail(users) {
  
-    for (let user of users) {
-        const indexOfDot = user.email.indexOf('.');
-        const indexOfAt = user.email.indexOf('@');
-        const firstName = user.email.slice(0, indexOfDot);
-        const lastName = user.email.slice(indexOfDot + 1, indexOfAt);
-        const newEmail = lastName.toLowerCase() + '.' + firstName.toLowerCase() + '@evilcorp.' + user.nat.toLowerCase();
-        user.email = newEmail;
+//     for (let user of users) {
+//         const indexOfDot = user.email.indexOf('.');
+//         const indexOfAt = user.email.indexOf('@');
+//         const firstName = user.email.slice(0, indexOfDot);
+//         const lastName = user.email.slice(indexOfDot + 1, indexOfAt);
+//         const newEmail = `${lastName.toLowerCase()}.${firstName.toLowerCase()}@evilcorp.${user.nat.toLowerCase()}`;
+//         user.email = newEmail;
+//     }
+// }
+
+
+// let emailList = emailAdresses(users);
+
+
+// newEmail(users);
+
+// console.log(users);
+
+// // newEmail(newEmailList);
+
+// /**
+//  *  Slicea upp den befintliga eposten
+//  *  spara som object i ny array
+//  *  Byta plats på för och efternamn
+//  *  Ta bort och lägga till ny addressnamnsgrejs
+//  *  lägga till domän beroende på nationalitet
+//  */
+
+
+
+function filterByGender(gender) {
+    let oneGender = [];
+
+    for(let user of users) {
+        if(user.name.title === "Monsieur" && gender === "Male" || user.name.title === "Mr" && gender === "Male") {
+            oneGender.push(user);
+        }
+        else if(user.name.title !== "Monsieur" && gender === "Female" || user.name.title !== "Mr" && gender === "Female") {
+            oneGender.push(user);
+        }
     }
+    return oneGender;
 }
 
+const filteredGender = filterByGender("Female");
+console.log(filteredGender);
 
-let emailList = emailAdresses(users);
-
-
-newEmail(users);
-
-console.log(users);
-
-// newEmail(newEmailList);
-
-/**
- *  Slicea upp den befintliga eposten
- *  spara som object i ny array
- *  Byta plats på för och efternamn
- *  Ta bort och lägga till ny addressnamnsgrejs
- *  lägga till domän beroende på nationalitet
- */
